@@ -1,0 +1,272 @@
+{
+  "cleaning": {
+    "raw_rows": 12120,
+    "duplicates_removed": 120,
+    "negative_distance_removed": 20,
+    "outlier_cap_minutes": 110.1,
+    "outliers_removed": 61,
+    "clean_rows": 11919,
+    "missing_values_after_cleaning": {
+      "traffic_level": 120,
+      "weather": 177,
+      "courier_rating": 235
+    },
+    "split": {
+      "train": 8343,
+      "val": 1788,
+      "test": 1788
+    },
+    "fill_values": {
+      "courier_rating": 4.3,
+      "weather": "Clear",
+      "traffic_level": "Medium"
+    }
+  },
+  "eda": {
+    "target": {
+      "min": 8.0,
+      "max": 109.7,
+      "mean": 39.77477137343737,
+      "median": 37.4,
+      "std": 16.60596829142424,
+      "q1": 28.3,
+      "q3": 48.7
+    },
+    "corr_with_target": {
+      "order_hour": -0.013,
+      "day_of_week": 0.003,
+      "distance_km": 0.73,
+      "courier_experience_yrs": -0.002,
+      "courier_rating": -0.012,
+      "prep_time_min": 0.393,
+      "multiple_deliveries": 0.287,
+      "festival": 0.047
+    },
+    "mean_by_traffic": {
+      "High": 40.9,
+      "Jam": 46.0,
+      "Low": 36.1,
+      "Medium": 37.9
+    },
+    "mean_by_weather": {
+      "Clear": 38.6,
+      "Cloudy": 39.3,
+      "Fog": 40.4,
+      "Rain": 40.4,
+      "Storm": 43.2
+    },
+    "mean_by_vehicle": {
+      "Bicycle": 51.6,
+      "Car": 39.6,
+      "Motorcycle": 36.5,
+      "Scooter": 41.1
+    }
+  },
+  "iteration1": {
+    "inputs": 24,
+    "Mean predictor": {
+      "val": {
+        "MAE": 13.068554738248599,
+        "RMSE": 17.147921773458414,
+        "R2": -0.000271391633722029
+      }
+    },
+    "Linear Regression": {
+      "train": {
+        "MAE": 3.566492243144805,
+        "RMSE": 4.89592781934173,
+        "R2": 0.9110198897271464
+      },
+      "val": {
+        "MAE": 3.749118689051424,
+        "RMSE": 5.20184071676594,
+        "R2": 0.9079531437994266
+      }
+    },
+    "Decision Tree": {
+      "train": {
+        "MAE": 1.2774950301332257e-18,
+        "RMSE": 6.736893993639776e-17,
+        "R2": 1.0
+      },
+      "val": {
+        "MAE": 5.475111856823267,
+        "RMSE": 7.458386043331671,
+        "R2": 0.8107723579647628
+      }
+    },
+    "Random Forest": {
+      "train": {
+        "MAE": 1.3184832793959007,
+        "RMSE": 1.7867644452439617,
+        "R2": 0.9881489308931091
+      },
+      "val": {
+        "MAE": 3.6321247203579414,
+        "RMSE": 5.063694784854342,
+        "R2": 0.912777224565925
+      }
+    },
+    "Gradient Boosting": {
+      "train": {
+        "MAE": 2.8018250348840223,
+        "RMSE": 3.6944894039929856,
+        "R2": 0.9493322315115803
+      },
+      "val": {
+        "MAE": 3.083493840283717,
+        "RMSE": 4.321163678273616,
+        "R2": 0.936482076116928
+      }
+    }
+  },
+  "iteration2": {
+    "inputs": 34,
+    "best_params": {
+      "Decision Tree": {
+        "max_depth": 12,
+        "min_samples_leaf": 10
+      },
+      "Random Forest": {
+        "max_features": 0.5,
+        "min_samples_leaf": 1,
+        "n_estimators": 200
+      },
+      "Gradient Boosting": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "n_estimators": 300,
+        "subsample": 0.8
+      }
+    },
+    "train_seconds": {
+      "Linear Regression": 0.0,
+      "Decision Tree": 2.2745254039764404,
+      "Random Forest": 70.98920559883118,
+      "Gradient Boosting": 44.40321493148804
+    },
+    "Mean predictor": {
+      "val": {
+        "MAE": 13.068554738248599,
+        "RMSE": 17.147921773458414,
+        "R2": -0.000271391633722029
+      },
+      "test": {
+        "MAE": 13.01631746771061,
+        "RMSE": 16.94228997781943,
+        "R2": -7.118146518059199e-05
+      }
+    },
+    "Linear Regression": {
+      "train": {
+        "MAE": 2.9022056522609208,
+        "RMSE": 3.8427105624117375,
+        "R2": 0.9451851443090901
+      },
+      "val": {
+        "MAE": 2.987221104197555,
+        "RMSE": 3.993801331553027,
+        "R2": 0.9457415009805976
+      },
+      "test": {
+        "MAE": 3.0000346758515297,
+        "RMSE": 3.875145330430137,
+        "R2": 0.9476806089662474
+      }
+    },
+    "Decision Tree": {
+      "train": {
+        "MAE": 3.290404079578805,
+        "RMSE": 4.396124404243967,
+        "R2": 0.9282597518472054
+      },
+      "val": {
+        "MAE": 4.570324434162549,
+        "RMSE": 6.280726645352734,
+        "R2": 0.865811701892072
+      },
+      "test": {
+        "MAE": 4.532758692651068,
+        "RMSE": 6.011281697696323,
+        "R2": 0.8741014142738556
+      }
+    },
+    "Random Forest": {
+      "train": {
+        "MAE": 1.2187787965959487,
+        "RMSE": 1.636674843156399,
+        "R2": 0.9900563062335208
+      },
+      "val": {
+        "MAE": 3.3246689038031314,
+        "RMSE": 4.671538071122194,
+        "R2": 0.9257639858898901
+      },
+      "test": {
+        "MAE": 3.307628914988814,
+        "RMSE": 4.311731847824576,
+        "R2": 0.9352275717491129
+      }
+    },
+    "Gradient Boosting": {
+      "train": {
+        "MAE": 2.4026525827357683,
+        "RMSE": 3.0729750655391346,
+        "R2": 0.9649457241755952
+      },
+      "val": {
+        "MAE": 2.779496970091773,
+        "RMSE": 3.764741186227961,
+        "R2": 0.9517868939551276
+      },
+      "test": {
+        "MAE": 2.8039971584716157,
+        "RMSE": 3.592353726663116,
+        "R2": 0.9550380769098662
+      }
+    }
+  },
+  "selected_model": "Gradient Boosting",
+  "final_test": {
+    "MAE": 2.8039971584716157,
+    "RMSE": 3.592353726663116,
+    "R2": 0.9550380769098662,
+    "within_3": 0.616331096196868,
+    "within_5": 0.8467561521252797,
+    "within_10": 0.9916107382550335,
+    "mean_signed_error": -0.09810808685471444
+  },
+  "final_cv_rmse": {
+    "folds": [
+      3.68,
+      3.59,
+      3.71,
+      3.6,
+      3.75
+    ],
+    "mean": 3.6657133302915197,
+    "std": 0.06119672880183745
+  },
+  "mae_by_distance": {
+    "0-3": 2.14,
+    "3-6": 2.68,
+    "6-10": 3.03,
+    "10-25": 4.02
+  },
+  "mae_by_traffic": {
+    "Low": 2.61,
+    "Medium": 2.53,
+    "High": 2.97,
+    "Jam": 3.28
+  },
+  "permutation_importance": {
+    "distance_km": 7.23,
+    "prep_time_min": 6.38,
+    "dist_x_traffic": 4.02,
+    "dist_x_bicycle": 2.88,
+    "multiple_deliveries": 1.53,
+    "stops_x_traffic": 1.33,
+    "dist_x_weather": 1.19,
+    "vehicle_type_Motorcycle": 0.93
+  }
+}
